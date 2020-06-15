@@ -3,7 +3,7 @@ More information can always be found in the [README.md](./README.md) file.
 
 The Big Transfer (BiT) framework allows anyone to train an image classification model in a wholly automated fashion, using models pretrained on a much larger dataset than ImageNet to achieve good results out of the box (an upgrade from the typical transfer learning pipeline of `from torchvision import models`).
 
-Hyparameters such as input image size, data augmentations and training schedule etc. are all infered from the statistics of the dataset, using what the authors call the BiT-HyperRule. They claim that these hyperparameter settings are designed to generalize across many datasets.
+Hyperparameters such as input image size, data augmentations and training schedule etc. are all inferred from the statistics of the dataset, using what the authors call the BiT-HyperRule. They claim that these hyperparameter settings are designed to generalize across many datasets.
 
 That said, you can definitely achieve better performance by finetuning these hyperparameters on your own specific application.
 
