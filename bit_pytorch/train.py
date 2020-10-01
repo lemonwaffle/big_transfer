@@ -65,6 +65,22 @@ def mktrainval(args, logger):
   ])
 
   if args.dataset == "mnist":
+    # Convert to 3 channels
+    train_tx = tv.transforms.Compose([
+        tv.transforms.Resize((precrop, precrop)),
+        tv.transforms.RandomCrop((crop, crop)),
+        tv.transforms.RandomHorizontalFlip(),
+        tv.transforms.ToTensor(),
+        tv.transforms.Lambda(lambda x: x.repeat(3, 1, 1)),
+        tv.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+    ])
+    val_tx = tv.transforms.Compose([
+        tv.transforms.Resize((crop, crop)),
+        tv.transforms.ToTensor(),
+        tv.transforms.Lambda(lambda x: x.repeat(3, 1, 1)),
+        tv.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+    ])
+
     train_set = tv.datasets.MNIST(args.datadir, transform=train_tx, train=True, download=True)
     valid_set = tv.datasets.MNIST(args.datadir, transform=val_tx, train=False, download=True)
   elif args.dataset == "svhn":
