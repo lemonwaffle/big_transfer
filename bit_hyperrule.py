@@ -19,6 +19,8 @@ def get_resolution(original_resolution):
 
 
 known_dataset_sizes = {
+  'mnist': (28, 28),
+  'svhn': (32, 32),
   'cifar10': (32, 32),
   'cifar100': (32, 32),
   'oxford_iiit_pet': (224, 224),
