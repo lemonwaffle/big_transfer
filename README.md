@@ -46,6 +46,15 @@ We also support training in the low-data regime: the `--examples_per_class <K>` 
 
 To see a detailed list of all available flags, run `python3 -m bit_{pytorch|jax|tf2}.train --help`.
 
+### BiT-M models fine-tuned on ILSVRC-2012
+
+For convenience, we provide BiT-M models that were already fine-tuned on the
+ILSVRC-2012 dataset. The models can be downloaded by adding the `-ILSVRC2012`
+postfix, e.g.
+```
+wget https://storage.googleapis.com/bit_models/BiT-M-R50x1-ILSVRC2012.npz
+```
+
 ### Available architectures
 
 We release all architectures mentioned in the paper, such that you may choose between accuracy or speed: R50x1, R101x1, R50x3, R101x3, R152x4.
@@ -143,4 +152,17 @@ Full results achieved that way in some test runs were:
 | :---:  | :---: | :---:  | :---:  |
 |   1    | 18.36 | 24.5   | 25.55  |
 |   5    | 50.64 | 64.5   | 64.18  |
-|  full  | 80.68 | WIP    | WIP    |
+|  full  | 80.68 | 85.15  | WIP    |
+
+## Out of context dataset
+
+In Appendix G of our paper, we investigate whether BiT improves out-of-context robustness.
+To do this, we created a dataset comprising foreground objects corresponding to 21 ILSVRC-2012 classes pasted onto 41 miscellaneous backgrounds.
+
+To download the dataset, run
+
+```
+wget https://storage.googleapis.com/bit-out-of-context-dataset/bit_out_of_context_dataset.zip
+```
+
+Images from each of the 21 classes are kept in a directory with the name of the class.
